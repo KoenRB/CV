@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koen Rabenberg - Motivation for Canon</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Screen related css */
+    :root{
+      --bg:#0f1115;
+      --card:#151820;
+      --ink:#e6e8ee;
+      --muted:#aab0bf;
+      --brand:#FF2D55; /* subtle Picnic-ish accent */
+      --chip:#1f2330;
+      --line:#232838;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.45}
+    a{color:var(--ink);text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.25)}
+    a:hover{opacity:.9}
+    .wrap{max-width:980px;margin:48px auto;padding:0 24px}
+    header{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
+    .name {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin-bottom: 13px; /* 👈 adds vertical space under your name */
+    }
+
+    .role{font-size:14px;color:var(--muted)}
+    .contact{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#1a1f2b,#11151f);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;color:#dfe3ee}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:16px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    h2{font-size:15px;font-weight:700;margin:0 0 10px 0;text-transform:uppercase;letter-spacing:.12em;color:#dfe3ee}
+    .summary{font-size:15px;color:#dfe3ee}
+    .muted{color:var(--muted)}
+    .list{display:flex;flex-direction:column;gap:10px}
+    .item h3{margin:0;font-size:16px}
+    .item .meta{font-size:13px;color:var(--muted);margin-top:2px}
+    .item ul{margin:8px 0 0 18px;padding:0}
+    .item li{margin:6px 0}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:10px;font-size:12px;color:#d7dbe6}
+    .two-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width:700px){.two-cols{grid-template-columns:1fr}}
+    .kv{display:grid;grid-template-columns:140px 1fr;gap:8px 14px;font-size:14px}
+    .kv div:nth-child(odd){color:var(--muted)}
+    footer{color:var(--muted);font-size:12px;margin-top:12px;text-align:center}
+    /* Print */
+    @media print{
+      :root{--bg:#fff;--card:#fff;--ink:#111;--muted:#444;--chip:#f5f7fb;--line:#e5e9f3}
+      body{background:#fff;color:#111}
+      a{border:none;text-decoration:none;color:#111}
+      section{box-shadow:none}
+      .badge{border-color:#ddd;background:#f6f7f9;color:#111}
+      .wrap{padding:0;margin:0}
+      header{margin-bottom:8px}
+    }
+    header.hero{
+      display:grid;
+      grid-template-columns: 1fr 200px; /* text | photo */
+      gap:16px;
+      align-items:start;                /* top-align both columns */
+    }
+    .hero-left{display:flex; flex-direction:column; gap:8px;}
+    @media (max-width:700px){
+      header.hero{ grid-template-columns:1fr; }
+    }
+    header.hero img { width: 180px !important; height: 180px !important; object-fit: cover; border-radius: 50%; }
+  </style>
+</head>
+<body>
+    <div class="wrap">
+        <header class="hero">
+        <div class="hero-left">
+            <div class="name">Koen Rabenberg</div>
+            <div class="print-link" hidden>Visit <a href="github.io/koenrb/cv">github.io/koenrb/cv</a> for the live CV</div>
+            <div class="role">Target role: Full Stack Software Engineer </div>
+            <div class="contact">
+                <span>📍 Rotterdam, NL</span>
+                <span>🎂 24 years old</span>
+                <span>🇳🇱 Dutch (EU citizen)</span>
+                <span>✉️ <a href="mailto:koenrb@gmail.com">koenrb@gmail.com</a></span>
+                <span>📱 +31 6 37019396</span>
+                <span>🔗 <a href="https://github.com/koenrb">GitHub</a></span>
+                <span>🔗 <a href="https://gitlab.com/koenrb">GitLab</a></span>
+                <span>🔗 <a href="https://www.linkedin.com/in/koenrb/">LinkedIn</a></span>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="../koen.jpg" alt="Koen Rabenberg">
+        </div>
+        </header>
+        <section>
+            <h2>Motivation for Canon</h2>
+            <div class="summary">
+                <p>
+                My name is Koen Rabenberg, and I am applying for the Software Engineer position at Canon. What immediately stood out to me about this role is the combination of modern backend work, system reliability, and real ownership. These are exactly the areas I’ve been working in, and the kind of challenges I genuinely enjoy taking on.
+                </p>
+                <p>
+                I am excited about the opportunity to join Canon because the technical goals of this role match closely with the skills I’ve built over the past few years. The idea of taking the current monitoring system and turning it into something modern, scalable, and reliable using Flask, PostgreSQL, Docker, and Kubernetes is a challenge I feel very comfortable approaching. I’ve worked with similar stacks before, and my background in software engineering gives me the structure and clarity needed to design services that actually fit into the larger workflow instead of sitting on top of it. On top of that, Canon’s innovative direction and its position in printing and imaging technology align strongly with what I want long-term: an environment where I keep learning and can grow into new responsibilities over time.
+                </p>
+                <p>
+                I bring a mix of practical engineering experience and structured problem analysis that fits well with what Canon is aiming to build. In my previous role, I designed and maintained real-time video analytics pipelines running on more than 120 production edge devices. I also built dashboards and monitoring tools that operators used every day to understand system health, alerts, and performance metrics. Much of that work revolved around identifying what different stakeholders actually needed, translating that into clear technical steps, and then building something reliable around those requirements. My background in modeling, simulation, and optimization helps me think about systems as a whole—spotting inefficiencies, understanding performance constraints, and choosing scalable solutions instead of quick fixes.
+                </p>
+                <p>
+                Alongside the technical work, my debating experience has shaped a large part of how I communicate and collaborate. During my two years as External Affairs board member of my debating association, I learned how to present ideas clearly, evaluate trade-offs on the spot, and find common ground between people with different goals. These are skills I use constantly in engineering settings as well, especially when explaining decisions, aligning expectations, or breaking down technical trade-offs for people with different backgrounds. I see communication as an essential part of engineering, and it’s an area where I feel I contribute strongly.
+                </p>
+                <p>
+                I would be glad to discuss how my experience—both technical and communicative—can support Canon’s monitoring and automation work. Thank you for taking the time to consider my application. I look forward to the possibility of contributing to the team.
+                </p>
+                <p>
+                Kind regards, 
+                Koen Rabenberg
+                </p>
+            </div>
+
+        </section>
+        <footer>
+        © 2025 Koen Rabenberg
+        </footer>
+    </div>
+</body>
+
+</html>
