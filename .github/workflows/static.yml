@@ -39,7 +39,8 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/
-          cp cv-canon.html _site/
+          cp canon.html _site/
+          cp -r motivation _site/
           # copy assets folder if it exists (ignore error if it doesn't)
           if [ -d assets ]; then
             cp -r assets _site/assets
