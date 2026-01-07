@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Koen Rabenberg — CV</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Printing related css */
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    @media print {
+      html, body {
+        background: #fff !important;
+        color: #111 !important;
+      }
+
+      /* Container */
+      .wrap { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+
+      /* Header: keep photo + text aligned at the top on one page if possible */
+      header.hero {
+        display: grid !important;
+        grid-template-columns: 1fr 180px !important; /* text | photo */
+        gap: 12px !important;
+        align-items: start !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      header.hero img { width: 180px !important; height: 180px !important; object-fit: cover; border-radius: 50%; }
+
+      /* a class definition for print-link that shows when printing */
+      .print-link { display: block !important; font-size: 12px !important; margin-bottom: 6px !important; }
+
+      /* Cards/sections look clean on paper */
+      section {
+        background: #fff !important;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 8mm !important;
+      }
+      a[href]:after {
+        content: " (" attr(link) ")";
+        font-size: 12px;
+        color: #000;
+      }
+
+      /* Optional: make the button print as simple text */
+      .chip-accent {
+        background: none !important;
+        border: none !important;
+        color: #000 !important;
+        padding: 0 !important;
+        font-weight: 600;
+      }
+
+      /* Avoid awkward breaks around headings and list items */
+      h2, h3, .item { break-after: avoid; page-break-after: avoid; }
+
+      /* Links should render like text */
+      a { border-bottom: none !important; color: inherit !important; }
+
+      /* Make sure your badges/chips keep their background if you want them colored */
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+      /* Optional: slightly tighter fonts for print */
+      .name { margin-bottom: 6px !important; }
+      .role { font-size: 13px !important; color: #333 !important; }
+      .contact { color: #333 !important; }
+    }
+    /* Screen related css */
+    :root{
+      --bg:#0f1115;
+      --card:#151820;
+      --ink:#e6e8ee;
+      --muted:#aab0bf;
+      --brand:#FF2D55; /* subtle Picnic-ish accent */
+      --chip:#1f2330;
+      --line:#232838;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.45}
+    a{color:var(--ink);text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.25)}
+    a:hover{opacity:.9}
+    .wrap{max-width:980px;margin:48px auto;padding:0 24px}
+    header{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
+    .name {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin-bottom: 13px; /* 👈 adds vertical space under your name */
+    }
+
+    .role{font-size:14px;color:var(--muted)}
+    .contact{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#1a1f2b,#11151f);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;color:#dfe3ee}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:16px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    h2{font-size:15px;font-weight:700;margin:0 0 10px 0;text-transform:uppercase;letter-spacing:.12em;color:#dfe3ee}
+    .summary{font-size:15px;color:#dfe3ee}
+    .muted{color:var(--muted)}
+    .list{display:flex;flex-direction:column;gap:10px}
+    .item h3{margin:0;font-size:20px}
+    .item .meta{font-size:13px;color:var(--muted);margin-top:2px}
+    .item ul{margin:8px 0 0 18px;padding:0}
+    .item li{margin:6px 0}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:10px;font-size:12px;color:#d7dbe6}
+    .two-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width:700px){.two-cols{grid-template-columns:1fr}}
+    .kv{display:grid;grid-template-columns:140px 1fr;gap:8px 14px;font-size:14px}
+    .kv div:nth-child(odd){color:var(--muted)}
+    footer{color:var(--muted);font-size:12px;margin-top:12px;text-align:center}
+    /* Print */
+    @media print{
+      :root{--bg:#fff;--card:#fff;--ink:#111;--muted:#444;--chip:#f5f7fb;--line:#e5e9f3}
+      body{background:#fff;color:#111}
+      a{border:none;text-decoration:none;color:#111}
+      section{box-shadow:none}
+      .badge{border-color:#ddd;background:#f6f7f9;color:#111}
+      .wrap{padding:0;margin:0}
+      header{margin-bottom:8px}
+    }
+    header.hero{
+      display:grid;
+      grid-template-columns: 1fr 200px; /* text | photo */
+      gap:16px;
+      align-items:start;                /* top-align both columns */
+    }
+    .hero-left{display:flex; flex-direction:column; gap:8px;}
+    @media (max-width:700px){
+      header.hero{ grid-template-columns:1fr; }
+    }
+    .chip-accent {
+      background: #5AA9FF;
+      border-color: #5AA9FF;
+      color: #000 !important;
+      font-weight: 600;
+    }
+
+
+  </style>
+</head>
+  <style>
+  @page { size: A4; margin: 12mm; }
+  @media print {
+    :root {
+      --bg:#ffffff !important; --card:#ffffff !important;
+      --ink:#000000 !important; --muted:#000000 !important;
+      --chip:#ffffff !important; --line:#000000 !important;
+    }
+    html, body { background:#fff !important; color:#000 !important; }
+    * { color:#000 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-shadow:none !important; }
+    a { color:#000 !important; text-decoration:none !important; border:none !important; }
+    section, .badge, .chip { background:#fff !important; border-color:#000 !important; }
+    header.hero { display:grid !important; grid-template-columns:1fr 180px !important; gap:12px !important; align-items:start !important; break-inside:avoid; page-break-inside:avoid; }
+    header.hero img { width:180px !important; height:180px !important; object-fit:cover; border-radius:50% !important; }
+    section { break-inside:avoid; page-break-inside:avoid; }
+    h2, h3, .item { break-after:avoid; page-break-after:avoid; }
+    header.hero,
+    section {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    
+
+    /* Also keep each column block intact */
+    .grid > div {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* Don’t leave headings hanging at the bottom of a page */
+    h2, h3 {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+  
+  }
+  </style>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-left">
+        <div class="name">Koen Rabenberg</div>
+        <div class="print-link" hidden>Visit <a href="http://koenrb.github.io/cv/erasmus.html">koenrb.github.io/cv/erasmus.html</a> for the live CV</div>
+        <div class="role">Target role: Software Engineer — Optimization Engineer — Automation Engineer </div>
+
+        <div class="contact">
+          <span>📍 Rotterdam, NL</span>
+          <span>🎂 25 years old</span>
+          <span>🇳🇱 Dutch (EU citizen)</span>
+          <span>✉️ <a href="mailto:koenrb@gmail.com">koenrb@gmail.com</a></span>
+          <span>📱 +31 6 37019396</span>
+          <span>🔗 <a href="https://github.com/koenrb">GitHub</a></span>
+          <span>🔗 <a href="https://gitlab.com/koenrb">GitLab</a></span>
+          <span>🔗 <a href="https://www.linkedin.com/in/koenrb/">LinkedIn</a></span>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="koen.jpg" alt="Koen Rabenberg"
+            style="width:200px;height:200px;object-fit:cover;border-radius:50%">
+      </div>
+    </header>
+
+
+    <section>
+      <h2>Profile</h2>
+      <p class="summary">
+        Analytical and detail-driven <strong>Data Engineer</strong> with strong experience in
+        <strong>Python</strong>, data pipelines, and real-time systems, and a growing focus on
+        <strong>healthcare data</strong> and clinical support environments.
+        Through my recent work as a <strong>mantelzorg-ondersteuner</strong>, I have gained first-hand insight into
+        how data quality, accessibility, and system reliability directly affect patient outcomes
+        and caregiver efficiency.
+        I design robust, transparent data solutions that bridge technical rigor with real-world
+        impact, and I am comfortable taking ownership from analysis to implementation.
+        Recent work includes <strong>data-driven software</strong>, <strong>streaming pipelines</strong>,
+        and <strong>automation</strong>—skills well aligned with medical research, operational analytics,
+        and hospital-scale data systems.
+      </p>
+      <div class="chips">
+        <span class="badge">Python 3.8–3.12</span>
+        <span class="badge">DeepStream • TAO Toolkit • GStreamer</span>
+        <span class="badge">MongoDB • InfluxDB • MinIO • AWS S3 • Postgres</span>
+        <span class="badge">Docker • Kubernetes(Learning)</span>
+        <span class="badge">GitLab CI/CD • Pytest</span>
+        <span class="badge">Algorithms • Simulation • Optimization</span>
+      </div>
+    </section>
+    <section>
+      <h2>Technical Profile & Fit for Erasmus MC</h2>
+        <p class="muted">
+          Strong background in <strong>automation</strong> and <strong>data-driven system design</strong>,
+          with a focus on building reliable and easy-to-maintain solutions.
+          Experienced with <strong>Python</strong>, containerized setups (<strong>Docker</strong>),
+          and structured testing and deployment workflows
+          (<strong>GitLab</strong>, <strong>Pytest</strong>).
+          I have built dashboards that clearly show system status, alerts, and performance,
+          helping users quickly understand what is happening.
+          I work well with different teams to turn requirements into practical data solutions,
+          and I communicate technical choices and trade-offs clearly to both technical
+          and non-technical stakeholders.
+        </p>
+      <!-- <div class="chips">
+        <a href="motivation/erasmus.html" link="https://koenrb.github.io/CV/motivation/erasmus.html" class="chip chip-accent">Full Motivation Letter</a>
+      </div> -->
+    </section>
+    <div class="grid">
+      <section>
+          <h2>Key Technical Skills</h2>
+          <div class="list">
+            <div class="kv">
+              <div>Programming</div><div>Python, Javascript, Java, C++(perf-critical)</div>
+              <div>Data visualization</div><div>Grafana, InfluxDB, WeightsAndBiases, Matplotlib, Plotly</div>
+              <div>Data Storage</div><div>MongoDB, PostgresDB, Telegraf, MinIO (object storage)</div>
+              <div>Markup Languages</div><div> HTML5, Markdown, Latex</div>
+              <div>Data formats</div><div>JSON, CSV, Excel</div>
+              <div>Cloud & Infra</div><div>Docker, AWS S3</div>
+              <div>CI/CD & QA</div><div>GitLab CI/CD, Pytest</div>
+              <div>Tools and Methodologies</div><div>Git, testing, UML, documentation, agile collaboration</div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+        <h2>Social Skills</h2>
+          <div class="list">
+            <div class="kv">
+              <div>Communication</div><div>Clear, concise, and structured in both writing and speech</div>
+              <div>Empathy</div><div>Understands how people in tough situations feel and respond</div>
+              <div>Collaboration</div><div>Team player who values diverse perspectives</div>
+              <div>Big Picture Thinker</div><div>Understands how details fit into broader goals</div>
+              <div>Problem Solving</div><div>Analytical thinker with a practical mindset</div>
+              <div>Adaptability</div><div>Quick learner who thrives in dynamic environments</div>
+              <div>Leadership</div><div>Experience leading small teams and initiatives</div>
+            </div>
+          </div>
+        </section>
+    </div>
+    <section>
+      <h2>Experience & Projects</h2>
+      <div class="list">
+        <div class = "item">
+        <h3>Social Work</h3>
+
+        <div class="meta">Buddy (Family Liaison Program) — Oct 2015 – Aug 2019</div>
+        <ul>
+          <li>Selected to be present in clinical consultations to help ensure clear communication between family and healthcare professionals</li>
+          <li>Made sure the patient’s concerns were heard and clearly communicated</li>
+        </ul>
+
+        <div class="meta">Mantelzorg-ondersteuner (Zorgmaatje Aan Huis – Rotterdam Noord) — Sep 2025 – Present</div>
+        <ul>
+          <li>Provided emotional and practical support to a patient with Niet-aangeboren Hersenletsel (NAH)</li>
+          <li>Helped with daily activities such as dressing, cooking, and household tasks</li>
+          <li>Helped schedule medical and vaccination appointments and communicated with healthcare providers</li>
+        </ul>
+
+
+        <h3 style="margin-top:20px">Software Engineer Employee — Vision & Streaming</h3>
+        <div class="meta">Hawkeye — May 2021 to Aug 2025</div>
+        <ul>
+          <li>Trained machine learning models (object detection, classification) for use in a live environment.</li>
+          <li>Built data storage and retrieval solutions with MongoDB, InfluxDB, and MinIO for efficient handling of large volumes of video metadata.</li>
+          <li>Implemented CI/CD pipelines using GitLab CI/CD and Pytest to ensure code quality and streamline deployments.</li>
+          <li>Collaborated closely with cross-functional teams to gather requirements, design solutions, and deliver features that met client needs.</li>
+          <li>Provided support for active devices in production, keeping professional and effectively communicating possibilities and fixes.</li>
+          <li><b>Built dashboards for maintenance and operator convenience in the managing of over 120 production edge devices.</b></li>
+        </ul>
+
+        <h3>Projects</h3>
+        <div class="meta">2022 — Present</div>
+        <ul>
+          <li><strong>Big-Data Trivia Game:</strong> used large datasets to generate trivia questions and answers. Gained skills in SQL, using PostgresDB and Python for data processing.</li>
+          <li><strong>Spotify API “Smooth Flow” Sequencer:</strong> reordered playlists so genres/BPM/ambience transition gradually; implemented feature extraction and distance metrics to minimize “jump cost” across tracks.</li>
+          <li><strong>Assistive Cooking (IR Sensor):</strong> built a prototype that uses an IR sensor to help elderly/dementia patients semi‑automate cooking steps safely; integrated signal processing and alert logic.</li>
+          <li><strong>Markov‑Chain Next‑Event Prediction:</strong> trained Markov models to predict next events in event logs; explored state aggregation and smoothing to improve sequence forecasting.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">Python (NumPy, Pandas)</span>
+          <span class="chip">C++ (perf‑critical)</span>
+          <span class="chip">Signal processing</span>
+          <span class="chip">Probabilistic modeling</span>
+          <span class="chip">APIs (Spotify)</span>
+        </div>
+
+      </div>
+    </section>
+    <div class="grid">
+      <div>
+        
+
+        <section>
+          <h2>Teaching & Mentoring</h2>
+          <ul>
+            <li><strong>Pair programming</strong> with emphasis on DRY and KISS.</li>
+            <li><strong>Tutoring Mathematics B</strong> (high school).</li>
+            <li><strong>Debate workshops</strong> on structured reasoning and impact analysis for internal association training as well as hired for college level classes.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Organization & Cooperation</h2>
+          <ul>
+            <li>Youth board member — Treasurer at <em>De Maas</em> rowing association</li>
+            <li>Board member (2 yrs) — External Affairs at <em>Chronos</em> debating association</li>
+            <li>Weekly sprints as part of programming roles</li>
+            <li>Team‑based university software projects</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Languages</h2>
+          <div class="kv">
+            <div>Dutch</div><div>Native</div>
+            <div>English</div><div>Fluent</div>
+            <div>German</div><div>Intermediate</div>
+            <div>Chinese</div><div>HSK3 (Intermediate)</div>
+          </div>
+        </section>   
+      </div>
+
+      <div>        
+        <section>
+          <h2>Education</h2>
+          <div class="item">
+            <h3>Primary Schools</h3>
+            <div class="meta">Yew Chung International School Beijing</div>
+            <div class="meta">Bavarian International School</div>
+            <h3>Secondary School</h3>
+            <div class="meta">Wolfert van Borselen Tweetalig — NT profile</div>
+            Graduated in 2019 with extra courses in Mathematics D and Chinese.
+            <div class="meta"></div>
+            <h3>BSc — Computer Science & Engineering — Incomplete</h3>
+            <div class="meta">Eindhoven University of Technology (TU/e) — Cohort 2020</div>
+            I decided to leave the program to pursue a more practical, project-driven learning path that aligned better with my professional goals.
+            I am committed to continuous learning, research, and professional development.
+            <div class="muted" style="margin-top:6px">Relevant coursework:</div>
+            <ul style="margin:6px 0 0 18px">
+              <li>Data Analytics for Engineers • Process Mining • Stochastic Simulation</li>
+              <li>Probability & Statistics • Statistics & Machine Learning • Responsible Data Science</li>
+              <li>Engineering Design • Computer Networks & Security</li>
+              <li><i>For other completed courses please ask me for a more comprehensive document</i></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 Koen Rabenberg
+    </footer>
+  </div>
+</body>
+</html>
