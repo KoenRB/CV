@@ -42,6 +42,7 @@ jobs:
           cp canon.html _site/
           cp vanderlande.html _site/
           cp erasmus.html _site/
+          cp software-engineer.html _site/
           cp koen.jpg _site/
           cp -r motivation _site/
           # copy assets folder if it exists (ignore error if it doesn't)
