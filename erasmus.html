@@ -172,9 +172,10 @@
     
 
     /* Also keep each column block intact */
-    .grid > div {
-      break-inside: avoid;
-      page-break-inside: avoid;
+    .grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important; /* equal width columns */
+      gap: 12px !important;
     }
 
     /* Don’t leave headings hanging at the bottom of a page */
@@ -314,7 +315,6 @@
           <li>Built data storage and retrieval solutions with MongoDB, InfluxDB, and MinIO for efficient handling of large volumes of video metadata.</li>
           <li>Implemented CI/CD pipelines using GitLab CI/CD and Pytest to ensure code quality and streamline deployments.</li>
           <li>Collaborated closely with cross-functional teams to gather requirements, design solutions, and deliver features that met client needs.</li>
-          <li>Provided support for active devices in production, keeping professional and effectively communicating possibilities and fixes.</li>
           <li><b>Built dashboards for maintenance and operator convenience in the managing of over 120 production edge devices.</b></li>
         </ul>
 
