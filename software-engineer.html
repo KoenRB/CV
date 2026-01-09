@@ -162,19 +162,20 @@
     section, .badge, .chip { background:#fff !important; border-color:#000 !important; }
     header.hero { display:grid !important; grid-template-columns:1fr 180px !important; gap:12px !important; align-items:start !important; break-inside:avoid; page-break-inside:avoid; }
     header.hero img { width:180px !important; height:180px !important; object-fit:cover; border-radius:50% !important; }
-    section { break-inside:avoid; page-break-inside:avoid; }
     h2, h3, .item { break-after:avoid; page-break-after:avoid; }
     header.hero,
     section {
       break-inside: avoid;
       page-break-inside: avoid;
+      grid-template-columns: 1fr 1fr !important;
     }
     
 
     /* Also keep each column block intact */
-    .grid > div {
-      break-inside: avoid;
-      page-break-inside: avoid;
+    .grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important; /* equal width columns */
+      gap: 12px !important;
     }
 
     /* Don’t leave headings hanging at the bottom of a page */
@@ -264,6 +265,21 @@
     <section>
       <h2>Experience & Projects</h2>
       <div class="list">
+        <div class="item">
+          <h3 style="margin-top:20px">Software Engineer Employee — Vision & Streaming</h3>
+          <div class="meta">Hawkeye — May 2021 to Aug 2025</div>
+          <ul>
+            <li>Developed and maintained real‑time video analytics pipelines using NVIDIA DeepStream and GStreamer, processing multiple h264/h265 streams with low latency.</li>
+            <li>Integrated machine learning models (object detection, classification) into streaming workflows using NVIDIA TAO Toolkit and WandB.</li>
+            <li>Built data storage and retrieval solutions with MongoDB, InfluxDB, and MinIO for efficient handling of large volumes of video metadata.</li>
+            <li>Containerized applications with Docker for consistent deployment across environments and machine architectures; utilized AWS S3 for scalable cloud storage.</li>
+            <li>Implemented CI/CD pipelines using GitLab CI/CD and Pytest to ensure code quality and streamline deployments.</li>
+            <li>Collaborated closely with cross-functional teams to gather requirements, design solutions, and deliver features that met client needs.</li>
+            <li>Provided support for active devices in production, keeping professional and effectively communicating possibilities and fixes.</li>
+            <!-- next should be bold -->
+            <li><b>Built dashboards for maintenance and operator convenience in the managing of over 120 production edge devices.</b></li>
+          </ul>
+        </div>
 
         <div class="item">
           <h3>Projects</h3>
@@ -282,19 +298,6 @@
             <span class="chip">Probabilistic modeling</span>
             <span class="chip">APIs</span>
           </div>
-
-          <h3 style="margin-top:20px">Software Engineer Employee — Vision & Streaming</h3>
-          <div class="meta">Hawkeye — May 2021 to Aug 2025</div>
-          <ul>
-            <li>Developed and maintained real‑time video analytics pipelines using NVIDIA DeepStream and GStreamer, processing multiple h264/h265 streams with low latency.</li>
-            <li>Integrated machine learning models (object detection, classification) into streaming workflows using NVIDIA TAO Toolkit and WandB.</li>
-            <li>Built data storage and retrieval solutions with MongoDB, InfluxDB, and MinIO for efficient handling of large volumes of video metadata.</li>
-            <li>Containerized applications with Docker for consistent deployment across environments and machine architectures; utilized AWS S3 for scalable cloud storage.</li>
-            <li>Implemented CI/CD pipelines using GitLab CI/CD and Pytest to ensure code quality and streamline deployments.</li>
-            <li>Collaborated closely with cross-functional teams to gather requirements, design solutions, and deliver features that met client needs.</li>
-            <li>Provided support for active devices in production, keeping professional and effectively communicating possibilities and fixes.</li>
-            <!-- next should be bold -->
-            <li><b>Built dashboards for maintenance and operator convenience in the managing of over 120 production edge devices.</b></li>
         </div>
 
       </div>
@@ -336,6 +339,10 @@
         <section>
           <h2>Education</h2>
           <div class="item">
+            <h3>BSc — Computer Science & Engineering — Incomplete</h3>
+            <div class="meta">Eindhoven University of Technology (TU/e) — Cohort 2020</div>
+            I decided to leave the program to pursue a more practical, project-driven learning path that aligned better with my professional goals.
+            I am committed to continuous learning, research, and professional development.
             <div class="muted" style="margin-top:6px">Relevant coursework:</div>
             <ul style="margin:6px 0 0 18px">
               <li>Data Analytics for Engineers • Process Mining • Stochastic Simulation</li>
