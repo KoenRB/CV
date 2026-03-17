@@ -45,6 +45,7 @@ jobs:
           cp software-engineer.html _site/
           cp albert_heijn.html _site/
           cp observability.html _site/
+          cp devops.html _site/
           cp koen.jpg _site/
           cp -r motivation _site/
           # copy assets folder if it exists (ignore error if it doesn't)
